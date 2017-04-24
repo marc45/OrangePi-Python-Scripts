@@ -14,8 +14,10 @@ PIN = port.PA20
 gpio.setcfg(port.PA20, gpio.OUTPUT)
 gpio.setcfg(port.PC4, gpio.OUTPUT)
 gpio.setcfg(port.PC7, gpio.OUTPUT)
+gpio.setcfg(port.PA8, gpio.OUTPUT)
 gpio.output(port.PC4, gpio.HIGH)
 gpio.output(port.PC7, gpio.HIGH)
+gpio.output(port.PA8, gpio.HIGH)
 
 instance = dht11.DHT11(pin=PIN)
 Fan = 0
