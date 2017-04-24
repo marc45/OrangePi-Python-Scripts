@@ -32,7 +32,7 @@ while True:
     humidLOW = 50
     print "Temp n Humidity Results:", result.temperature, result.humidity
     DATA = [ result.temperature, result.humidity ]  
-    if (result.temperature) >= tempHI and Fan == 0:
+    if (result.temperature) >= tempHI and Fan == 0 and (results.humidity) in range(humidHIGH, humidLOW):
       print "Detected High Temp, humidity seems okay, Turning on fan, turning off dry heat source"
       gpio.setcfg(port.PC7, gpio.OUTPUT)
       gpio.setcfg(port.PC4, gpio.OUTPUT)
@@ -64,7 +64,7 @@ while True:
           DryHeat = 0
           HumidHeat = 1
 
-    if (result.temperature) <= tempLOW and (result.temperature) != 0 and DryHeat != 1:
+    if (result.temperature) <= tempLOW and (result.temperature) != 0 and DryHeat != 1 and (results.humidity) in range(humidHIGH, humidLOW):
       print "Detected Low Temp humidity seems okay, turning off fan and turning dry heat source on"
       gpio.setcfg(port.PC7, gpio.OUTPUT)
       gpio.setcfg(port.PC4, gpio.OUTPUT)
