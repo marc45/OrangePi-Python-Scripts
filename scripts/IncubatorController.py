@@ -11,8 +11,7 @@ gpio.setcfg(port.PC4, gpio.OUTPUT)
 gpio.setcfg(port.PC7, gpio.OUTPUT)
 gpio.output(port.PC4, gpio.HIGH)
 gpio.output(port.PC7, gpio.HIGH)
-#
-# read data using pin 20
+
 instance = dht11.DHT11(pin=PIN)
 Fan = 0
 Heat = 0
