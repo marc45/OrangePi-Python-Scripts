@@ -1,9 +1,7 @@
 # OrangePi-Python-Scripts
 Series of python scripts used for the OrangePi arm boards.
 
-GPIO Diagram for OrangePi Series:
-
-[Alt text](http://www.cnx-software.com/wp-content/uploads/2015/09/Orange_Pi_2_GPIO_Pinout.png "GPIO Info")
+GPIO Diagram for Orange Pi Series: http://www.cnx-software.com/wp-content/uploads/2015/09/Orange_Pi_2_GPIO_Pinout.png
 
 [https://github.com/mikey506/OrangePi-Python-Scripts/blob/master/scripts/IncubatorController.py](IncubatorController.py) - This script allows an orange pi to create a controlled enviroment for maintining heat and soon humidity levels to provide optimal conditions for egg incubation process.
 
