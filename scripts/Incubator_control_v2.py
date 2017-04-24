@@ -41,28 +41,28 @@ while True:
       Fan = 1
       DryHeat = 0
       HumidHeat = 0 
-      elif (result.humidity) <= humidLOW:
-        print "Detected High Temp & High humidity, Turning on fan, and turning off both dry and humid heat sources"
-        gpio.setcfg(port.PC7, gpio.OUTPUT)
-        gpio.setcfg(port.PA8, gpio.OUTPUT)
-        gpio.setcfg(port.PC4, gpio.OUTPUT)
-        gpio.output(port.PC7, gpio.LOW) 
-        gpio.output(port.PC4, gpio.HIGH)
-        gpio.output(port.PA21, gpio.LOW)
-        Fan = 1
-        DryHeat = 0
-        HumidHeat = 0
-        else:
-          print "Detected High Temp & Low humidity, Turning on humid heat source, turning off dry heat source and turning on Fan"
-          gpio.setcfg(port.PC7, gpio.OUTPUT)
-          gpio.setcfg(port.PA21, gpio.OUTPUT)
-          gpio.setcfg(port.PC4, gpio.OUTPUT)
-          gpio.output(port.PC7, gpio.LOW) 
-          gpio.output(port.PC4, gpio.HIGH)
-          gpio.output(port.PA21, gpio.LOW)
-          Fan = 1
-          DryHeat = 0
-          HumidHeat = 1
+    elif (result.humidity) <= humidLOW and (result.temperature) >= tempHIGH:
+      print "Detected High Temp & High humidity, Turning on fan, and turning off both dry and humid heat sources"
+      gpio.setcfg(port.PC7, gpio.OUTPUT)
+      gpio.setcfg(port.PA8, gpio.OUTPUT)
+      gpio.setcfg(port.PC4, gpio.OUTPUT)
+      gpio.output(port.PC7, gpio.LOW) 
+      gpio.output(port.PC4, gpio.HIGH)
+      gpio.output(port.PA21, gpio.LOW)
+      Fan = 1
+      DryHeat = 0
+      HumidHeat = 0
+    elif (result.humidity) <= humidHIGH and (result.temperature) >= tempHIGH:
+      print "Detected High Temp & Low humidity, Turning on humid heat source, turning off dry heat source and turning on Fan"
+      gpio.setcfg(port.PC7, gpio.OUTPUT)
+      gpio.setcfg(port.PA21, gpio.OUTPUT)
+      gpio.setcfg(port.PC4, gpio.OUTPUT)
+      gpio.output(port.PC7, gpio.LOW) 
+      gpio.output(port.PC4, gpio.HIGH)
+      gpio.output(port.PA21, gpio.LOW)
+      Fan = 1
+      DryHeat = 0
+      HumidHeat = 1
 
     if (result.temperature) <= tempLOW and (result.temperature) != 0 and DryHeat != 1 and (results.humidity) in range(humidHIGH, humidLOW):
       print "Detected Low Temp humidity seems okay, turning off fan and turning dry heat source on"
@@ -73,26 +73,26 @@ while True:
       Fan = 1 
       DryHeat = 1
       HumidHeat = 0
-      elif (result.humidity) <= humidLOW:
-        print "Detected Low Temperature & Low Humidity, Turning on fan, and turning on humid heat source"
-        gpio.setcfg(port.PC7, gpio.OUTPUT)
-        gpio.setcfg(port.PA8, gpio.OUTPUT)
-        gpio.setcfg(port.PC4, gpio.OUTPUT)
-        gpio.output(port.PC7, gpio.LOW) 
-        gpio.output(port.PC4, gpio.HIGH)
-        gpio.output(port.PA8, gpio.LOW)
-        Fan = 0
-        DryHeat = 0
-        HumidHeat = 1
-        else:
-          print "Detected Low Temperature & High Humidity, Turning off humid heat source, turning on dry heat source and Fan"
-          gpio.setcfg(port.PC7, gpio.OUTPUT)
-          gpio.setcfg(port.PA8, gpio.OUTPUT)
-          gpio.setcfg(port.PC4, gpio.OUTPUT)
-          gpio.output(port.PC7, gpio.LOW) 
-          gpio.output(port.PC4, gpio.LOW)
-          gpio.output(port.PA8, gpio.HIGH)
-          Fan = 1
-          DryHeat = 1
-          HumidHeat = 0
+    elif (result.humidity) <= humidLOW and (result.temperature) <= tempLOW:
+      print "Detected Low Temperature & Low Humidity, Turning on fan, and turning on humid heat source"
+      gpio.setcfg(port.PC7, gpio.OUTPUT)
+      gpio.setcfg(port.PA8, gpio.OUTPUT)
+      gpio.setcfg(port.PC4, gpio.OUTPUT)
+      gpio.output(port.PC7, gpio.LOW) 
+      gpio.output(port.PC4, gpio.HIGH)
+      gpio.output(port.PA8, gpio.LOW)
+      Fan = 0
+      DryHeat = 0
+      HumidHeat = 1
+    elif (result.humidity) >= humidHIGH and (result.temperature) <= tempLOW:
+      print "Detected Low Temperature & High Humidity, Turning off humid heat source, turning on dry heat source and Fan"
+      gpio.setcfg(port.PC7, gpio.OUTPUT)
+      gpio.setcfg(port.PA8, gpio.OUTPUT)
+      gpio.setcfg(port.PC4, gpio.OUTPUT)
+      gpio.output(port.PC7, gpio.LOW) 
+      gpio.output(port.PC4, gpio.LOW)
+      gpio.output(port.PA8, gpio.HIGH)
+      Fan = 1
+      DryHeat = 1
+      HumidHeat = 0
     time.sleep(5)
