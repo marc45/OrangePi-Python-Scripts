@@ -4,13 +4,6 @@ import dht11
 import time
 import datetime
 
-
-# initialize GPIO
-#gpio.setwarnings(False)
-#gpio.setmode(GPIO.BCM)
-#gpio.cleanup()
-# Set relay pins as output
-#gpio.setup(0, GPIO.OUT)
 gpio.init()
 PIN = port.PA20
 gpio.setcfg(port.PA20, gpio.OUTPUT)
